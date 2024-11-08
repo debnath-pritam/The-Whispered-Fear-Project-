@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Tales Of users</title>
+    <style>
+html,body{height:100%;
+        }
+
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #121212;
+    color: #eee;
+    background-image: url("3d-horror-haunted-street-dzi9g0p3whld7u4x.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    
+    
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+
+
+}
+
+footer{
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    
+   
+}
+
+
+footer a {
+    color: #ff0000; /* Red color for email link */
+    text-decoration: none;
+   
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ff6666;
+    animation: flicker 3s infinite;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #ff6666;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #cc3333;
+    animation: textGlow 1.5s infinite;
+    text-shadow: 0 0 20px rgba(204, 51, 51, 0.8);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    width: 80%;
+}
+
+.city-section {
+    background-color: rgba(0, 0, 0, 0.385);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px whitesmoke;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width:500px;
+}
+
+.city-section:hover {
+    background-color: rgba(0, 0, 0, 0.677);
+    
+}
+
+.city-title {
+    font-size: 1.5em;
+    color: #ff6666;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.story-content {
+    display: none;
+    padding-top: 10px;
+    color: #eee;
+    text-align: left;
+    background-attachment: fixed;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px #cc3333; }
+    50% { text-shadow: 0 0 20px #ff6666; }
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Whispered Fear</h1>
+        <nav>
+            <ul>
+                <li><a href="welcome.html">Welcome Letter</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="explore tales.html">Explore Tales</a></li>
+                <li><a href="submitstory.html">Submit Your Tale</a></li>
+            </ul>
+            <p style="color: #f75757; text-decoration:overline;"> <b>Explore Tales &gt; " From The Voice Of Our Readers "</b></p>
+
+
+        </nav>
+    </header>
+
+    <main>
+        <section id="cities"> <h2>From Our Readers</h2> <div id="talesContainer" class="grid-container"> <!-- Dynamically loaded tales will appear here --> </div> </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Whispered Fear. All rights reserved.</p>
+        <p>Contact: <a href="mailto:contactwhisperedfear@gmail.com">contactwhisperedfear@gmail.com</a></p>
+        <p>Address: LPU, Phagwara, Punjab</p>
+    </footer>
+
+    <script> function loadTales() { const talesContainer = document.getElementById('talesContainer'); const tales = JSON.parse(localStorage.getItem('tales')) || []; talesContainer.innerHTML = ''; tales.forEach(tale => { const taleElement = document.createElement('div'); taleElement.classList.add('city-section'); taleElement.innerHTML = ` <h3 class="user">${tale.location}</h3> <div class="story-content"> <p style="color: #ff0000;"><b>${tale.title}</b></p> <p>${tale.story}</p> </div> `; taleElement.addEventListener('click', () => { const storyContent = taleElement.querySelector('.story-content'); storyContent.style.display = storyContent.style.display === 'block' ? 'none' : 'block'; }); talesContainer.appendChild(taleElement); }); } window.onload = loadTales; </script> 
+</body> </html>

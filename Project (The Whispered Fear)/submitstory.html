@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Tale</title>
+    <style> 
+        
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #121212;
+    color: #eee;
+    background-image: url("rG48bdC.webp"); /* Add a spooky background image */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    
+    
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+
+
+}
+
+footer{
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    bottom: 20%;
+    
+   
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ff6666;
+    animation: flicker 3s infinite;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #ff6666;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #cc3333;
+    animation: textGlow 1.5s infinite;
+    text-shadow: 0 0 20px rgba(204, 51, 51, 0.8);
+    text-align: center;
+}
+
+section {
+    background-color: rgba(0, 0, 0, 0.385);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px whitesmoke;
+    width: 50%;
+   
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    top: 100px;
+    margin-bottom:150px;
+}
+
+form {display: flex; flex-direction: column; height: 350px;}
+
+form label {
+    margin-bottom: 5px;
+    color: #ff6666;
+    text-align: center;
+}
+
+form .form-group { display: flex; flex-direction: row; align-items: center; }
+
+form input, form textarea, form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ff6666;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.385);
+    color: #eee;
+    resize: both;
+    margin: 8px;
+}
+
+form button {
+    background-color: #ff6666;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #cc3333;
+}
+
+
+
+form #story { height: 50px; width:400px;}
+form #title{width: 300px;}
+footer a {
+    color: #ff0000; /* Red color for email link */
+    text-decoration: none;
+    position: relative;
+}
+
+footer a:hover {
+    animation: burn 1s forwards;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    color: transparent; /* Make text transparent after burn animation */
+}
+
+/* Animations */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px #cc3333; }
+    50% { text-shadow: 0 0 20px #ff6666; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Haunting Effects */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("rG48bdC.webp");
+    opacity: 0.2;
+    pointer-events: none;
+    
+}
+
+@keyframes haunt {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.2; }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Whispered Fear</h1>
+        <nav>
+            <ul>
+                <li><a href="welcome.html">Welcome Letter</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="explore tales.html">Explore Tales</a></li>
+                
+            </ul>
+            <p style="color: #f75757; text-decoration:overline;"> <b>Submit Your Tale</b></p>
+
+        </nav>
+    </header>
+
+    <main>
+        <section id="form"> <div class="form-container"> <h2>Submit Your Tale Here</h2> <form id="taleForm"> <div class="form-group"> <label for="location">Location</label> <input type="text" id="location" name="location" required> </div><br> <div class="form-group"> <label for="title">Tale's Title</label> <input type="text" id="title" name="title" required> </div><br> <div class="form-group"> <label for="story">Tale</label> <textarea id="story" name="story" required></textarea> </div><br> <button type="submit" class="submit-btn">Submit</button> </form> </div> </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 The Whispered Fear. All rights reserved.</p>
+        <p>Contact: <a href="mailto:contactwhisperedfear@gmail.com">contactwhisperedfear@gmail.com</a></p>
+        <p>Address: LPU, Phagwara, Punjab</p>
+    </footer>
+    <script> document.getElementById('taleForm').addEventListener('submit', function(event) { event.preventDefault(); const location = document.getElementById('location').value; const title = document.getElementById('title').value; const story = document.getElementById('story').value; const tale = { location, title, story }; let tales = JSON.parse(localStorage.getItem('tales')) || []; tales.push(tale); localStorage.setItem('tales', JSON.stringify(tales)); alert('Tale submitted successfully!'); document.getElementById('taleForm').reset(); }); </script>
+  
+
+</body>
+</html>
